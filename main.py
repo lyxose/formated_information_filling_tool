@@ -19,7 +19,7 @@ split_sign = re.split(pattern, text)
 
 first = True
 for sign,i in zip(split_sign[:-1],range(len(split_sign)-1)):
-    if sign in ["+","-",'/'] and split_sign[i+1] in ["+","-",'/'] :
+    if sign in ["+","-","_",'/'] and split_sign[i+1] in ["+","-","_",'/'] :
         i0=i
         while sign =='/':  # 保证sign 为 '+' or '-'
             sign=split_sign[i+1]
@@ -31,7 +31,7 @@ for sign,i in zip(split_sign[:-1],range(len(split_sign)-1)):
             first = False
             mark = sign
             startidx = i0  # 起始索引
-    elif not first:  # sign or next sign not in ["+","-",'/']且 not first
+    elif not first:  # sign or next sign not in ["+","-","_",'/']且 not first
         endidx = i+2 # sign 要保留，同时索引是左闭右开故需要再多一位 
         break
 
